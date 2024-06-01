@@ -6,17 +6,17 @@ Para a construção do sistema de ponto digital com as especificações fornecid
 
 **Funcionalidades:**
 1. **Login do Super Admin:**
-   - Campos de e-mail e senha.
+   - Campos de e-mail e senha.ok
    - Botão para enviar as credenciais.
 
 2. **Dashboard:**
-   - Exibição de um resumo das empresas cadastradas.
-   - Botão para adicionar nova empresa.
+   - Exibição de um resumo das empresas cadastradas.ok
+   - Botão para adicionar nova empresa.ok
 
 3. **Cadastro de Empresas:**
-   - Campos para o nome da empresa, CNPJ, e-mail, telefone, endereço.
-   - Botão para gerar novo banco de dados para a empresa.
-   - Botão para salvar as informações.
+   - Campos para o nome da empresa, CNPJ, e-mail, telefone, endereço.ok
+   - Botão para gerar novo banco de dados para a empresa.ok
+   - Botão para salvar as informações.ok
 
 4. **Lista de Empresas:**
    - Tabela com a lista de empresas cadastradas.
@@ -29,20 +29,19 @@ Para a construção do sistema de ponto digital com as especificações fornecid
 
 **Funcionalidades:**
 1. **Login da Empresa:**
-   - Campos de e-mail e senha.
-   - Botão para enviar as credenciais.
+   - Campos de e-mail e senha.ok
+   - Botão para enviar as credenciais.ok
 
 2. **Dashboard:**
-   - Exibição de um resumo dos funcionários cadastrados e das últimas atividades de ponto.
+   - Exibição de um resumo dos funcionários cadastrados e das últimas atividades de ponto.ok
 
 3. **Cadastro de Funcionários:**
-   - Campos para o nome do funcionário, CPF, e-mail, telefone, endereço.
-   - Campo para upload da foto do funcionário (usada para comparação no registro de ponto).
-   - Botão para salvar as informações.
+   - Campos para o nome do funcionário, CPF, e-mail, telefone, endereço.ok
+   - Botão para salvar as informações.ok
 
 4. **Lista de Funcionários:**
-   - Tabela com a lista de funcionários cadastrados.
-   - Ações para editar, excluir ou consultar registros de ponto de um funcionário.
+   - Tabela com a lista de funcionários cadastrados.ok
+   - Ações para editar, excluir ou consultar registros de ponto de um funcionário.ok
    - Campo de busca para filtrar funcionários por nome ou CPF.
 
 5. **Consulta de Dados de Funcionários:**
@@ -199,3 +198,33 @@ function recurse_copy($src, $dst) {
 Certifique-se de que os diretórios e permissões de arquivo estejam configurados corretamente para que o script possa criar pastas e copiar arquivos conforme necessário. Além disso, você precisará adaptar os detalhes específicos (como o nome dos arquivos de modelo, os placeholders nos arquivos, etc.) para atender às suas necessidades específicas.
 
 Este é apenas um exemplo básico para ilustrar o processo. Dependendo das suas necessidades exatas, você pode precisar de um script mais complexo e detalhado. Se precisar de mais assistência, estou aqui para ajudar!
+
+
+
+CREATE TABLE empresas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cnpj VARCHAR(14) UNIQUE,
+    email VARCHAR(100),
+    telefone VARCHAR(15),
+    endereco TEXT
+);
+
+CREATE TABLE funcionarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    empresa_id INT,
+    nome VARCHAR(100),
+    cpf VARCHAR(11) UNIQUE,
+    email VARCHAR(100),
+    telefone VARCHAR(15),
+    endereco TEXT
+);
+
+CREATE TABLE pontos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    empresa_id INT,
+    funcionario_id INT,
+    check_in DATETIME,
+    check_out DATETIME,
+    photo LONGBLOB
+);
